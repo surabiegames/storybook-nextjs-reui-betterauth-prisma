@@ -1,0 +1,21 @@
+import { Button } from "@/components/ui/button"
+import { CreditCardIcon } from "lucide-react"
+
+export function Pattern() {
+  return (
+    <Button
+      variant="outline"
+      className="group/button h-auto justify-start gap-3 px-4 py-3 text-left"
+    >
+      <div className="bg-muted text-accent-foreground group-hover/button:bg-background rounded-md flex size-10 items-center justify-center">
+        <CreditCardIcon aria-hidden="true" className="size-5" />
+      </div>
+      <div className="flex flex-col gap-0.5">
+        <span>Credit Card</span>
+        <span className="text-muted-foreground text-xs font-normal">
+          Pay securely with your Visa or Mastercard
+        </span>
+      </div>
+    </Button>
+  )
+}

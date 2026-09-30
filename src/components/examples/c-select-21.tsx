@@ -1,0 +1,59 @@
+"use client"
+
+import { useState } from "react"
+
+import { cn } from "cn"
+import { Field } from "@/components/ui/field"
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select"
+import { XIcon } from "lucide-react"
+
+const frameworks = [
+  { label: "Select framework", value: null },
+  { value: "next", label: "Next.js" },
+  { value: "svelte", label: "SvelteKit" },
+  { value: "nuxt", label: "Nuxt.js" },
+  { value: "remix", label: "Remix" },
+  { value: "astro", label: "Astro" },
+]
+
+export function Pattern() {
+  const [value, setValue] = useState<string | null>(null)
+
+  const handleClear = (e: React.MouseEvent) => {
+    e.stopPropagation()
+    setValue(null)
+  }
+
+  return (
+    <Field className="max-w-xs">
+      <Select value={value} onValueChange={setValue} items={frameworks}>
+        <SelectTrigger className={cn(value && "[&>svg:last-child]:hidden!")}>
+          <SelectValue />
+          {value && (
+            <div
+              role="button"
+              onClick={handleClear}
+              className="text-muted-foreground hover:text-foreground flex size-4 items-center justify-center rounded-sm opacity-70 transition-opacity hover:opacity-100 focus:outline-none"
+            >
+              <XIcon className="size-4" />
+              <span className="sr-only">Clear selection</span>
+            </div>
+          )}
+        </SelectTrigger>
+        <SelectContent alignItemWithTrigger={false}>
+          {frameworks.slice(1).map((framework) => (
+            <SelectItem key={framework.value} value={framework.value}>
+              {framework.label}
+            </SelectItem>
+          ))}
+        </SelectContent>
+      </Select>
+    </Field>
+  )
+}
