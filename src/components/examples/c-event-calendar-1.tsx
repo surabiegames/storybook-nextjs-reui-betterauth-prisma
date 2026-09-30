@@ -450,7 +450,10 @@ function SettingsTextSelect({
       <Label htmlFor={id} className="font-normal">
         {label}
       </Label>
-      <Select value={value} onValueChange={onValueChange}>
+      <Select
+  value={value}
+  onValueChange={(next) => next !== null && onValueChange(next)}
+>
         <SelectTrigger id={id} size="sm" className="w-36">
           {/* Base UI's Value renders the raw value string by default; the
               selected option's label reads better for every control here. */}

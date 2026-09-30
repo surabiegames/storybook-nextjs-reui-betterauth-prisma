@@ -43,6 +43,7 @@ import { Spinner } from "@/components/ui/spinner"
 import { oauthProviderPlugin } from "@/lib/auth/oauth-provider-plugin"
 import { cn } from "@/lib/utils"
 import { UserAvatar } from "../user/user-avatar"
+import type { Session, User } from "better-auth"
 
 export type OAuthSelectAccountProps = {
   className?: string
@@ -80,6 +81,7 @@ export function OAuthSelectAccount({ className }: OAuthSelectAccountProps) {
   })
   const { data: deviceSessions, isPending: isDeviceSessionsPending } =
     useListDeviceSessions(oauthClient)
+
 
   const client = publicClient.data
   const clientName = client?.client_name || localization.application
@@ -204,7 +206,7 @@ export function OAuthSelectAccount({ className }: OAuthSelectAccountProps) {
           </div>
         ) : (
           <ItemGroup className="gap-2">
-            {deviceSessions.map((deviceSession) => {
+            {deviceSessions.map((deviceSession: { session: Session; user: User }) => {
               const isCurrent = deviceSession.session.id === session?.session.id
               const isSelecting = pendingSessionId === deviceSession.session.id
 

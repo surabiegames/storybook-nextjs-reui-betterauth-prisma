@@ -24,7 +24,9 @@ import {
   InputGroupButton,
   InputGroupInput,
 } from "@/components/ui/input-group"
-import { EyeOffIcon, EyeIcon, GithubIcon } from "lucide-react"
+import { EyeOffIcon, EyeIcon } from "lucide-react"
+import { GithubIcon } from "@/components/icons/github-icon"
+
 
 export function Pattern() {
   const [isVisible, setIsVisible] = useState(false)

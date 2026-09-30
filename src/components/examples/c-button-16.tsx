@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button"
-import { GithubIcon } from "lucide-react"
+import { GithubIcon } from "@/components/icons/github-icon"
 
 export function Pattern() {
   return (
